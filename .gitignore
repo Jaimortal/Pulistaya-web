@@ -53,7 +53,7 @@ Thumbs.db
 .tmp/
 tmp/
 
-# Large binaries and installer packages (Host on GitHub Releases instead)
+# Large binaries and installer packages (Hosted via GitHub Releases)
 *.apk
 *.idsig
 *.exe
