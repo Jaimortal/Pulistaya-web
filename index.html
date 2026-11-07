@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulistaya - 3D Filipino Multiplayer Hide-and-Seek Game</title>
+  <meta name="description" content="Pulistaya is a 3D multiplayer hide-and-seek game inspired by the Filipino street game Pulis Dunggab. Built with Godot 4. Experience LAN multiplayer, custom abilities, and interactive 3D maps.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Three.js Import Map for GLB 3D Viewer -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo">
+        <img src="assets/images/pulistaya-logo-rounded.png" alt="Pulistaya Logo" class="nav-logo-img">
+        <span>PULIS</span>TAYA
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">Story</a></li>
+        <li><a href="#map3d" class="nav-link">3D Map Viewer</a></li>
+        <li><a href="#gallery" class="nav-link">Gameplay</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#controls" class="nav-link">Controls</a></li>
+        <li><a href="#credits" class="nav-link">Credits</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://github.com/Jaimortal/Pulistaya-web" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-sm" id="nav-github-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          Source Code
+        </a>
+        <a href="#download" class="btn btn-primary btn-sm js-open-download">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Game
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>Filipino Street Game &bull; Godot 4.7.2</span>
+          <span class="badge-tag-android">Android Only</span>
+          <span class="badge-tag-sprint">Built in 3 Days</span>
+        </div>
+        <h1 class="hero-title">
+          The Traditional Game of <br>
+          <span class="gradient-text">Pulis Dunggab</span>, <br>
+          Now in Full 3D on Android.
+        </h1>
+        <p class="hero-subtitle">
+          An action-packed, <strong>Android-exclusive multiplayer playground</strong> where one <strong>Police</strong> hunts down cunning <strong>Hiders</strong>. Designed 100% for mobile touchscreen gameplay.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#download" class="btn btn-primary btn-lg js-open-download">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download Game (Android APK)
+          </a>
+
+          <a href="https://github.com/Jaimortal/Pulistaya-web" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            GitHub Repository
+          </a>
+
+          <a href="#map3d" class="btn btn-secondary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Explore 3D Map
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <h4>Android</h4>
+            <p>Mobile Exclusive</p>
+          </div>
+          <div class="hero-stat-item">
+            <h4>3 Days</h4>
+            <p>Sprint Build</p>
+          </div>
+          <div class="hero-stat-item">
+            <h4>Open Source</h4>
+            <p>Made For Fun</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-img-wrapper">
+          <img src="assets/images/gameplay-compound.jpg" alt="Pulistaya In-Game Compound Gameplay">
+          <div class="hero-card-badge">Live In-Game Screenshot</div>
+        </div>
+        <div class="hero-card-footer">
+          <div class="hero-card-info">
+            <h4>The Compound Map</h4>
+            <p>Tactical hiding spots &bull; Mobile on-screen HUD</p>
+          </div>
+          <a href="#gallery" class="btn btn-secondary btn-sm">View All</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Story Section: The Legend of Pulistaya -->
+  <section class="section-story" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lore &amp; Background</span>
+        <h2 class="section-title">The Legend of Pulistaya</h2>
+        <p class="section-desc">From nostalgic Filipino street games to an electrifying multiplayer digital arena.</p>
+      </div>
+
+      <div class="story-card-main">
+        <div class="story-quote-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
+        <p class="story-lead">
+          In a peaceful Filipino neighborhood, children have always enjoyed playing a traditional game called <strong>Pulis Dunggab</strong>.
+        </p>
+
+        <div class="story-body">
+          <p>
+            The rules are simple: one player becomes the Police, while the others become the Hiders. The Police must find and catch everyone before time runs out.
+          </p>
+
+          <div class="story-highlight-box">
+            But in Pulistaya, the game becomes something more exciting. A mysterious competition has turned the neighborhood into a massive playground. Streets, houses, grassy fields, and hidden locations become the battlefield.
+          </div>
+
+          <p>
+            One player is chosen as the Police. Equipped with special abilities, the Police must track down the Hiders before they can escape. The Hiders, however, are not defenseless. Each character has unique abilities that help them disappear, run away, distract the Police, or even fight back.
+          </p>
+
+          <p>
+            The Police must use strategy, observation, and timing to catch everyone. The Hiders must work together, use their surroundings, and carefully manage their skills to survive.
+          </p>
+
+          <p class="story-climax">
+            Only one side can win. Will the Police catch everyone, or will the Hiders outsmart the hunter?
+          </p>
+        </div>
+      </div>
+
+      <!-- Two Sides / Roles Grid -->
+      <div class="roles-grid">
+        <!-- The Police Hunter Card -->
+        <div class="role-card police">
+          <div class="role-header">
+            <div class="role-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="22" y1="12" x2="18" y2="12"></line>
+                <line x1="6" y1="12" x2="2" y2="12"></line>
+                <line x1="12" y1="6" x2="12" y2="2"></line>
+                <line x1="12" y1="22" x2="12" y2="18"></line>
+              </svg>
+            </div>
+            <span class="role-badge">The Hunter</span>
+          </div>
+          <h3>The Police</h3>
+          <p>
+            Armed with tracking equipment, enhanced stamina, and tactical abilities. Track footprints, sweep sectors with radar, and shoot to tag fleeing suspects before the countdown reaches zero.
+          </p>
+          <div class="skills-pill-group">
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Sprint / Run
+            </span>
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              Shoot / Tag
+            </span>
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"/><path d="M7.76 7.76a6 6 0 0 1 8.48 0"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="14" x2="12" y2="22"/></svg>
+              Radar Scan
+            </span>
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              Showhide
+            </span>
+          </div>
+        </div>
+
+        <!-- The Hiders Card -->
+        <div class="role-card hider">
+          <div class="role-header">
+            <div class="role-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <span class="role-badge">The Survivors</span>
+          </div>
+          <h3>The Hiders</h3>
+          <p>
+            Vulnerable alone, but dangerous in numbers. Blend into houses, coordinate ambushes, distract the hunter with deception ("Ano"), shove pursuers, or deliver a surprise backstab.
+          </p>
+          <div class="skills-pill-group">
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
+              Ano (Distract)
+            </span>
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Dash / Run
+            </span>
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+              Push / Stun
+            </span>
+            <span class="skill-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg>
+              Dunggab / Stab
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 3D GLB Map & Character Viewer (High-Performance WebGL) -->
+  <section class="section-viewer" id="map3d">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">High-Performance 3D Engine</span>
+        <h2 class="section-title">Explore Maps &amp; Characters in 3D</h2>
+        <p class="section-desc">Fast, lightweight WebGL rendering. Rotate, pan, zoom, and inspect level designs directly in your browser.</p>
+      </div>
+
+      <div class="viewer-wrapper">
+        <!-- 3D Canvas Viewport -->
+        <div class="viewer-viewport">
+          <div id="canvas-container"></div>
+
+          <!-- Top Overlay: Character Animations (Shown for models with animations) -->
+          <div class="viewer-top-overlay" id="viewer-anim-controls" style="display: none;">
+            <span class="anim-label">Animations:</span>
+            <div class="anim-btn-group" id="anim-btn-group"></div>
+          </div>
+
+          <!-- Loading Overlay -->
+          <div class="viewer-loading" id="viewer-loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading 3D Asset...</div>
+            <div class="loading-progress" id="loading-progress">0%</div>
+          </div>
+
+          <!-- Viewport Overlay UI -->
+          <div class="viewer-overlay-ui">
+            <div class="viewer-hint">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <span>Left Click: Rotate &bull; Scroll: Zoom &bull; Right Click: Pan</span>
+            </div>
+
+            <div class="viewer-tool-btns">
+              <button class="viewer-icon-btn" id="btn-autorotate" title="Toggle Auto-Rotate">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 4 23 10 17 10"></polyline>
+                  <polyline points="1 20 1 14 7 14"></polyline>
+                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+              </button>
+              <button class="viewer-icon-btn" id="btn-wireframe" title="Toggle Wireframe">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </button>
+              <button class="viewer-icon-btn" id="btn-reset-view" title="Reset Camera View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="22" y1="12" x2="18" y2="12"></line>
+                  <line x1="6" y1="12" x2="2" y2="12"></line>
+                  <line x1="12" y1="6" x2="12" y2="2"></line>
+                  <line x1="12" y1="22" x2="12" y2="18"></line>
+                </svg>
+              </button>
+              <button class="viewer-icon-btn" id="btn-fullscreen" title="Toggle Fullscreen">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <polyline points="9 21 3 21 3 15"></polyline>
+                  <line x1="21" y1="3" x2="14" y2="10"></line>
+                  <line x1="3" y1="21" x2="10" y2="14"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Controls & Model Switcher -->
+        <div class="viewer-sidebar">
+          <div>
+            <h4 class="sidebar-title">Select 3D Asset</h4>
+            <p class="sidebar-desc">Switch between game maps and 3D character models:</p>
+
+            <div class="model-selector-group">
+              <button class="model-option-btn active" data-model="lobby">
+                <div class="model-option-info">
+                  <h5>Lobby Map</h5>
+                  <span>Spawn &amp; Waiting Arena</span>
+                </div>
+                <span class="model-badge">Map</span>
+              </button>
+
+              <button class="model-option-btn" data-model="compound">
+                <div class="model-option-info">
+                  <h5>Compound Map</h5>
+                  <span>Neighborhood Grounds</span>
+                </div>
+                <span class="model-badge">Map</span>
+              </button>
+
+              <button class="model-option-btn" data-model="knight">
+                <div class="model-option-info">
+                  <h5>Knight Chibi</h5>
+                  <span>Animated Hider Hero</span>
+                </div>
+                <span class="model-badge">Hero</span>
+              </button>
+
+              <button class="model-option-btn" data-model="police">
+                <div class="model-option-info">
+                  <h5>Police Hunter</h5>
+                  <span>Animated Seeker Hero</span>
+                </div>
+                <span class="model-badge">Hero</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Model Details / Specs Card -->
+          <div class="model-specs">
+            <div class="spec-row">
+              <span class="spec-label">Asset:</span>
+              <span class="spec-value" id="spec-model-name">Lobby Map</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Format:</span>
+              <span class="spec-value">glTF 2.0 (.glb)</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Complexity:</span>
+              <span class="spec-value" id="spec-polygons">8,200 Polygons</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">File Size:</span>
+              <span class="spec-value" id="spec-filesize">1.5 MB</span>
+            </div>
+            <div class="spec-row" style="flex-direction: column; gap: 0.25rem; margin-top: 0.5rem;">
+              <span class="spec-label">Description:</span>
+              <span class="spec-value" id="spec-description" style="font-weight: normal; font-size: 0.75rem; color: #9CA3AF;">
+                The official pre-match waiting area and interactive spawn hub where players assemble and select their characters before the round starts.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gameplay Gallery Section (With User's Screenshots) -->
+  <section class="section-gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Actual Gameplay</span>
+        <h2 class="section-title">Screenshots &amp; In-Game Action</h2>
+        <p class="section-desc">Captured live from Godot 4 builds on PC and Android touch devices.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Item 1: Character Selection -->
+        <div class="gallery-item">
+          <img src="assets/images/character-select.png" alt="Pulistaya Character Select Menu">
+          <div class="gallery-zoom-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-tag">Pre-Match Lobby</span>
+            <h4 class="gallery-item-title">Character Customization &amp; Chibi Selection</h4>
+          </div>
+        </div>
+
+        <!-- Item 2: Compound Gameplay -->
+        <div class="gallery-item">
+          <img src="assets/images/gameplay-compound.jpg" alt="Pulistaya Compound In-Game HUD">
+          <div class="gallery-zoom-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-tag">Hider Perspective</span>
+            <h4 class="gallery-item-title">Compound Grounds &amp; Virtual Touch Joystick</h4>
+          </div>
+        </div>
+
+        <!-- Item 3: Police Street Chase -->
+        <div class="gallery-item">
+          <img src="assets/images/gameplay-police-street.jpg" alt="Pulistaya Police Role on Street">
+          <div class="gallery-zoom-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-tag">Police Hunter Role</span>
+            <h4 class="gallery-item-title">Street Patrol, Radar Scan &amp; Target Aiming</h4>
+          </div>
+        </div>
+
+        <!-- Item 4: Settings & Controls Modal -->
+        <div class="gallery-item">
+          <img src="assets/images/settings-controls.jpg" alt="Pulistaya Settings and Controls Configuration">
+          <div class="gallery-zoom-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <div class="gallery-item-overlay">
+            <span class="gallery-item-tag">Player Customization</span>
+            <h4 class="gallery-item-title">Full Key Rebinding &amp; Sensitivity Calibration</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Section (Vector Icons, No Emojis) -->
+  <section class="section-features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Game Mechanics</span>
+        <h2 class="section-title">Built for Intense Multiplayer Fun</h2>
+        <p class="section-desc">Designed from the ground up for seamless local LAN matches and cross-device gameplay.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <h3>LAN &amp; Mobile Hotspot</h3>
+          <p>Host games right from your smartphone or PC. Friends can join seamlessly by typing in the local IP address or connecting via WiFi.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+              <path d="M6 12h4m-2-2v4"></path>
+              <line x1="15" y1="11" x2="15.01" y2="11"></line>
+              <line x1="18" y1="13" x2="18.01" y2="13"></line>
+            </svg>
+          </div>
+          <h3>Cross-Platform Support</h3>
+          <p>Seamlessly play together whether you are on Windows PC with mouse &amp; keyboard, or on an Android smartphone with touch controls.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3>High-Level ENet Sync</h3>
+          <p>Real-time replication of character movement, rotation, sprint animations, skill triggers, and camera angles with minimal network latency.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3>Mobile Touch &amp; Virtual HUD</h3>
+          <p>Responsive floating virtual joystick, drag-to-look camera gestures, two-finger pinch zoom, and dedicated tactical skill buttons.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <h3>Filipino Neighborhood Maps</h3>
+          <p>Authentic Philippine environmental details: sari-sari store colors, concrete bungalow houses, utility posts, and neighborhood compounds.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h3>Custom Key Rebinding</h3>
+          <p>Fully rebindable keyboard mappings, independent touch and mouse look sensitivities, and persistent device settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls Reference Section -->
+  <section class="section-controls" id="controls">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Input Guide</span>
+        <h2 class="section-title">Touch Controls &amp; Developer Keys</h2>
+        <p class="section-desc">Pulistaya is built exclusively for Android touchscreens. PC controls are for developer testing only.</p>
+      </div>
+
+      <div class="controls-tabs">
+        <button class="tab-btn active" data-tab="android">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+          </svg>
+          Android (Official Touch Controls)
+        </button>
+        <button class="tab-btn" data-tab="pc">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Developer Debug (Testing Only)
+        </button>
+      </div>
+
+      <!-- Android Controls Panel (Default Active) -->
+      <div class="controls-panel active" id="panel-android">
+        <table class="controls-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Touchscreen Input</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Character Movement</td>
+              <td><span class="key-badge">Virtual Joystick</span> (Left Screen Area)</td>
+            </tr>
+            <tr>
+              <td>Look &amp; Camera Angle</td>
+              <td><span class="key-badge">Single Finger Drag</span> (Right Screen Area)</td>
+            </tr>
+            <tr>
+              <td>Camera Zoom In / Out</td>
+              <td><span class="key-badge">Two-Finger Pinch</span></td>
+            </tr>
+            <tr>
+              <td>Skill 1 (Sprint / Run)</td>
+              <td><span class="key-badge">RUN Button</span> (On-screen HUD)</td>
+            </tr>
+            <tr>
+              <td>Skill 2 (Police Shoot / Hider Push)</td>
+              <td><span class="key-badge">PUSH / SHOOT Button</span></td>
+            </tr>
+            <tr>
+              <td>Skill 3 (Radar / Hider Ano)</td>
+              <td><span class="key-badge">ANO / RADAR Button</span></td>
+            </tr>
+            <tr>
+              <td>HUD &amp; Sensitivity Config</td>
+              <td><span class="key-badge">Settings Icon</span> (Top Right)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PC Controls Panel (Developer Testing Only) -->
+      <div class="controls-panel" id="panel-pc">
+        <div style="background: rgba(234, 88, 12, 0.12); border-left: 3px solid var(--primary-500); padding: 0.85rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-size: 0.85rem; color: #fff; display: flex; align-items: center; gap: 0.65rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-400); flex-shrink: 0;">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span><strong>Developer Notice:</strong> Pulistaya is an <strong>Android-exclusive title</strong> and does not support PC players in public matches. WASD and keyboard bindings are used solely inside the Godot editor for testing and rapid debugging.</span>
+        </div>
+        <table class="controls-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Assigned Key / Mouse</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Move Forward / Back</td>
+              <td><span class="key-badge">W</span> / <span class="key-badge">S</span></td>
+            </tr>
+            <tr>
+              <td>Move Left / Right</td>
+              <td><span class="key-badge">A</span> / <span class="key-badge">D</span></td>
+            </tr>
+            <tr>
+              <td>Camera Rotate &amp; Pitch</td>
+              <td><span class="key-badge">Mouse Movement</span></td>
+            </tr>
+            <tr>
+              <td>Camera Zoom In / Out</td>
+              <td><span class="key-badge">Mouse Wheel Scroll</span></td>
+            </tr>
+            <tr>
+              <td>Sprint / Dash</td>
+              <td><span class="key-badge">SHIFT</span></td>
+            </tr>
+            <tr>
+              <td>Police Shoot / Hider Push</td>
+              <td><span class="key-badge">F</span></td>
+            </tr>
+            <tr>
+              <td>Radar Scan / Hider "Ano"</td>
+              <td><span class="key-badge">E</span></td>
+            </tr>
+            <tr>
+              <td>Stab / Dunggab (Hider)</td>
+              <td><span class="key-badge">R</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credits & Development Story Section -->
+  <section class="section-credits" id="credits">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Behind The Scenes</span>
+        <h2 class="section-title">Development &amp; Open Source Credits</h2>
+        <p class="section-desc">Created in an intensive 3-day development sprint combining human design with modern AI-assisted engineering.</p>
+      </div>
+
+      <!-- 3-Day Sprint Disclaimer Banner -->
+      <div class="sprint-disclaimer-box">
+        <div class="sprint-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="sprint-text">
+          <h4>Created in a Total of 3 Days — Made For Fun</h4>
+          <p>
+            Please don't expect a AAA commercial release! This game was engineered from scratch in just <strong>3 days</strong> as a creative experiment, learning project, and passion tribute to the Filipino street game <em>Pulis Dunggab</em>.
+          </p>
+        </div>
+      </div>
+
+      <div class="credits-grid-top">
+        <!-- Lead Developer Card -->
+        <div class="dev-card">
+          <span class="dev-role-badge">Lead Designer &amp; Developer</span>
+          <h3>Jaime Perez</h3>
+          <p>
+            Designed the game concept, mechanics, and orchestrated the entire system architecture. Designed the multi-agent AI workflow that generated and assembled the code, assets, maps, and logic into a playable Godot 4 multiplayer title.
+          </p>
+        </div>
+
+        <!-- Open Source & Non-Commercial Card -->
+        <div class="open-source-card">
+          <div>
+            <span class="dev-role-badge" style="background: rgba(34, 197, 94, 0.15); color: #4ade80;">100% Free &amp; Open Source</span>
+            <h3>No Store Release &bull; Pure Passion</h3>
+            <p>
+              Pulistaya has <strong>no intention to be released on Google Play Store</strong> or any commercial marketplace. The entire codebase is open-source on GitHub so other developers and Filipino students can study, modify, and build upon it freely.
+            </p>
+          </div>
+          <div style="font-size: 0.82rem; color: #9CA3AF;">
+            Platform: Android APK only &bull; License: Open Source (MIT)
+          </div>
+        </div>
+      </div>
+
+      <!-- AI & Software Toolchain (Vector Icons, No Emojis) -->
+      <h4 class="tools-title">AI &amp; Software Toolchain</h4>
+      <div class="tools-grid">
+        <div class="tool-chip">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                <circle cx="12" cy="5" r="2"></circle>
+                <path d="M12 7v4"></path>
+                <line x1="8" y1="16" x2="8.01" y2="16"></line>
+                <line x1="16" y1="16" x2="16.01" y2="16"></line>
+              </svg>
+            </div>
+            <h5>ChatGPT (GPT)</h5>
+          </div>
+          <p>Structured the entire repository layout, folder conventions, and overarching game architectural flow.</p>
+        </div>
+
+        <div class="tool-chip">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+            </div>
+            <h5>Gemini</h5>
+          </div>
+          <p>Wrote and engineered the core GDScript implementations, player synchronization, and multiplayer networking logic.</p>
+        </div>
+
+        <div class="tool-chip">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h5>Claude</h5>
+          </div>
+          <p>Created and modeled the 3D game maps, urban layout geometry, and environmental spatial designs.</p>
+        </div>
+
+        <div class="tool-chip">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12a4 4 0 1 0 8 0"></path>
+                <line x1="12" y1="2" x2="12" y2="6"></line>
+              </svg>
+            </div>
+            <h5>Blender</h5>
+          </div>
+          <p>Used to inspect, modify, merge, and optimize 3D map parts and textures generated during the level creation pipeline.</p>
+        </div>
+
+        <div class="tool-chip">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2v-.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <h5>Godot Engine 4</h5>
+          </div>
+          <p>The primary game engine powering the 3D third-person camera, virtual mobile joysticks, and ENet LAN multiplayer.</p>
+        </div>
+      </div>
+
+      <!-- Free & Open Source 3D Resources -->
+      <h4 class="tools-title">Free &amp; Open Source Community Resources</h4>
+      <div class="asset-credits-grid">
+        <a href="https://grab3d.com/" target="_blank" rel="noopener noreferrer" class="asset-credit-card">
+          <div class="asset-credit-info">
+            <h4>Grab3D</h4>
+            <p>Provided free, open-source 3D character models used as the basis for our chibi heroes.</p>
+          </div>
+          <span class="btn btn-secondary btn-sm" style="flex-shrink: 0;">Visit Grab3D ↗</span>
+        </a>
+
+        <a href="https://kinemiq.app/studio/" target="_blank" rel="noopener noreferrer" class="asset-credit-card">
+          <div class="asset-credit-info">
+            <h4>Kinemiq Studio</h4>
+            <p>Free open-source web studio used to craft character movement, walking, running, and action animations.</p>
+          </div>
+          <span class="btn btn-secondary btn-sm" style="flex-shrink: 0;">Visit Kinemiq ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download & Source Code CTA Banner -->
+  <section class="section-cta" id="download">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to Enter the Neighborhood?</h2>
+        <p>
+          Grab your friends, host a match on your local network, and test your wits in the ultimate Filipino hide-and-seek showdown.
+        </p>
+
+        <div class="cta-actions">
+          <button class="btn btn-primary btn-lg js-open-download">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download Game Build
+          </button>
+
+          <a href="https://github.com/Jaimortal/Pulistaya-web" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Modal Dialog -->
+  <div class="modal-overlay" id="download-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn js-close-modal" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="modal-header">
+        <h3>Download Pulistaya</h3>
+        <p>Select your platform to download the latest available game build.</p>
+      </div>
+
+      <div class="download-options">
+        <!-- Android APK (Official & Only Target) -->
+        <div class="download-option-card">
+          <div class="download-info">
+            <div class="download-icon android">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5802 8.411 13.8447 8.127 12 8.127s-3.5802.284-5.1368.8227L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+              </svg>
+            </div>
+            <div class="download-details">
+              <h4>Android APK (Official Build)</h4>
+              <p>v1.0 &bull; 92.4 MB &bull; Requires Android 8.0+ &bull; Phone &amp; Tablet</p>
+            </div>
+          </div>
+          <a href="downloads/Pulistaya.apk" download="Pulistaya.apk" class="btn btn-primary btn-sm" id="btn-dl-apk">
+            Download APK
+          </a>
+        </div>
+
+        <!-- GitHub Source Code -->
+        <div class="download-option-card">
+          <div class="download-info">
+            <div class="download-icon github">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="download-details">
+              <h4>Source Code &amp; Project</h4>
+              <p>100% Open source on GitHub &bull; Godot 4.7.2 project files</p>
+            </div>
+          </div>
+          <a href="https://github.com/Jaimortal/Pulistaya-web" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-sm">
+            View Repo
+          </a>
+        </div>
+      </div>
+
+      <div style="font-size: 0.8rem; color: #9CA3AF; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-400); flex-shrink: 0;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <span><strong>Quick Setup Tip:</strong> For local multiplayer, make sure all phones and PCs are connected to the same WiFi router or Mobile Hotspot.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screenshot Lightbox Modal -->
+  <div class="lightbox-overlay" id="lightbox-modal">
+    <div class="lightbox-close-btn" id="close-lightbox">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="lightbox-img-wrapper">
+      <img src="" alt="" id="lightbox-img">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="margin-bottom: 0.5rem;">
+            <img src="assets/images/pulistaya-logo-rounded.png" alt="Pulistaya Logo" class="nav-logo-img">
+            <span>PULIS</span>TAYA
+          </a>
+          <p>A Filipino-inspired 3D multiplayer hide-and-seek game developed with Godot Engine 4. Bringing traditional street games to the digital generation.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#about">The Legend</a></li>
+            <li><a href="#map3d">3D Map Viewer</a></li>
+            <li><a href="#gallery">Game Screenshots</a></li>
+            <li><a href="#controls">Controls Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Downloads</h4>
+          <ul class="footer-links">
+            <li><a href="#download" class="js-open-download">Android APK (92.4MB)</a></li>
+            <li><a href="#credits">Credits &amp; Toolchain</a></li>
+            <li><a href="https://github.com/Jaimortal/Pulistaya-web/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></li>
+            <li><a href="https://github.com/Jaimortal/Pulistaya-web" target="_blank" rel="noopener noreferrer">Source Code (MIT)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tech Stack</h4>
+          <ul class="footer-links">
+            <li><a href="https://godotengine.org" target="_blank" rel="noopener noreferrer">Godot Engine 4.7.2</a></li>
+            <li><a href="https://threejs.org" target="_blank" rel="noopener noreferrer">Three.js WebGL</a></li>
+            <li><a href="#">ENet High-Level Networking</a></li>
+            <li><a href="#">GDScript</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pulistaya Game Project. All rights reserved.</p>
+        <p>Built for Filipino Game Development &amp; Cultural Heritage.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/viewer3d.js"></script>
+</body>
+</html>
