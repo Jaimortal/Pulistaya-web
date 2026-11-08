@@ -59,30 +59,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const openModalBtns = document.querySelectorAll('.js-open-download');
   const closeModalBtns = document.querySelectorAll('.js-close-modal');
 
+  const openModal = (modalEl) => {
+    if (modalEl) {
+      modalEl.classList.add('open');
+      document.body.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeModal = (modalEl) => {
+    if (modalEl) {
+      modalEl.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+    }
+  };
+
   openModalBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (downloadModal) {
-        downloadModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+      openModal(downloadModal);
     });
   });
 
   closeModalBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (downloadModal) {
-        downloadModal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
+      closeModal(downloadModal);
     });
   });
 
   if (downloadModal) {
     downloadModal.addEventListener('click', (e) => {
       if (e.target === downloadModal) {
-        downloadModal.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(downloadModal);
       }
     });
   }
@@ -99,22 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (img && lightbox && lightboxImg) {
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        openModal(lightbox);
       }
     });
   });
 
   if (closeLightbox && lightbox) {
     closeLightbox.addEventListener('click', () => {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
+      closeModal(lightbox);
     });
 
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
-        lightbox.classList.remove('open');
-        document.body.style.overflow = '';
+        closeModal(lightbox);
       }
     });
   }
@@ -122,14 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Escape Key Listener for Modals
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (downloadModal && downloadModal.classList.contains('open')) {
-        downloadModal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-      if (lightbox && lightbox.classList.contains('open')) {
-        lightbox.classList.remove('open');
-        document.body.style.overflow = '';
-      }
+      closeModal(downloadModal);
+      closeModal(lightbox);
     }
   });
 });
