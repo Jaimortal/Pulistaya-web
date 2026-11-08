@@ -64,7 +64,7 @@ Pulistaya-web/
 │       ├── knight.glb       # Animated Chibi Hider hero
 │       └── police.glb       # Animated Hunter hero
 └── downloads/
-    └── Pulistaya.apk        # Official Android export (92.4 MB)
+    └── Pulistaya.apk        # Official Android export (V-11.8.6617 ~100 MB)
 ```
 
 ---
