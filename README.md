@@ -7,19 +7,22 @@ A responsive landing page and interactive 3D map viewer for **Pulistaya**, an An
 ## 📱 Platform Target & Gameplay Notice
 
 - **Platform Target:** **Android Only** (Smartphones & Tablets running Android 8.0+).
-- **Controls:** Optimized for on-screen touch controls, virtual movement joysticks, drag-to-look camera rotation, and dedicated skill buttons.
+- **Controls:** Optimized for on-screen touch controls, virtual movement joysticks, drag-to-look camera rotation, dedicated skill buttons, and interactive in-game emotes.
+- **Latest Version:** **V-11.13.61203** (Emote Update &bull; 103 MB APK).
 - **PC Keyboard / WASD Notice:** Keyboard controls are strictly for **developer testing and rapid debugging** inside the Godot editor. Public PC play is not supported.
 - **Multiplayer:** Local LAN and Mobile Hotspot connection through Godot's high-level ENet networking.
 
 ---
 
-## ⚡ 3-Day Development Sprint & Open Source Notice
+## ⚡ 3.5-Day Development Sprint & Status Notice
 
-> **Note:** Pulistaya was built from scratch in a **total of 3 days** as a creative experiment, learning project, and cultural nostalgia piece. Please don't expect a commercial AAA release!
+> **Note:** Pulistaya was built from scratch in a **total of 3 and a half days** as a creative experiment, learning project, and cultural nostalgia piece.
+> 
+> **Status:** Active development has been **discontinued** as the developer (Jaimortal / Jaime Perez) has transitioned away from a programming career. The GitHub source repository has been switched to private, but the Android APK remains **100% free to download and play** over local LAN / mobile hotspots. For questions or permissions, email the developer at `thepersonaljaime@gmail.com`.
 
-- **Repository:** [https://github.com/Jaimortal/Pulistaya-web](https://github.com/Jaimortal/Pulistaya-web)
-- **100% Free & Open Source:** The entire source code and project are open for students, game developers, and the community to learn from.
-- **No Store Release:** There is no intention to publish this game on Google Play Store or any commercial platform — it was built purely for fun.
+- **Web Repository:** [https://github.com/Jaimortal/Pulistaya-web](https://github.com/Jaimortal/Pulistaya-web)
+- **Game Repository:** [https://github.com/Jaimortal/Pulistaya](https://github.com/Jaimortal/Pulistaya) *(Private)*
+- **No Store Release:** Built purely for fun and cultural appreciation.
 
 ---
 
@@ -64,7 +67,7 @@ Pulistaya-web/
 │       ├── knight.glb       # Animated Chibi Hider hero
 │       └── police.glb       # Animated Hunter hero
 └── downloads/
-    └── Pulistaya.apk        # Official Android export (V-11.8.6617 ~100 MB)
+    └── Pulistaya.apk        # Official Android export (V-11.13.61203 103 MB)
 ```
 
 ---

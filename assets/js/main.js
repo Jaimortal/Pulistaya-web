@@ -96,7 +96,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Gallery Lightbox
+  // 5. GitHub Private Repository Modal
+  const githubModal = document.getElementById('github-modal');
+  const openGithubModalBtns = document.querySelectorAll('.js-open-github-modal');
+  const closeGithubModalBtns = document.querySelectorAll('.js-close-github-modal');
+
+  openGithubModalBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal(downloadModal);
+      openModal(githubModal);
+    });
+  });
+
+  closeGithubModalBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      closeModal(githubModal);
+    });
+  });
+
+  if (githubModal) {
+    githubModal.addEventListener('click', (e) => {
+      if (e.target === githubModal) {
+        closeModal(githubModal);
+      }
+    });
+  }
+
+  // 6. Gallery Lightbox
   const lightbox = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const galleryItems = document.querySelectorAll('.gallery-item');
@@ -125,10 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Escape Key Listener for Modals
+  // 7. Escape Key Listener for Modals
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeModal(downloadModal);
+      closeModal(githubModal);
       closeModal(lightbox);
     }
   });

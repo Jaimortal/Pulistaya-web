@@ -55,7 +55,7 @@
       </ul>
 
       <div class="nav-actions">
-        <a href="https://github.com/Jaimortal/Pulistaya" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-sm" id="nav-github-btn">
+        <a href="#github-modal" class="btn btn-github btn-sm js-open-github-modal" id="nav-github-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
@@ -81,7 +81,8 @@
           <span class="hero-badge-dot"></span>
           <span>Filipino Street Game &bull; Godot 4.7.2</span>
           <span class="badge-tag-android">Android Only</span>
-          <span class="badge-tag-sprint">Built in 3 Days</span>
+          <span class="badge-tag-sprint">Built in 3.5 Days</span>
+          <span class="badge-tag-android" style="background: rgba(234, 88, 12, 0.15); color: var(--primary-400); border: 1px solid rgba(234, 88, 12, 0.3);">Emote Update</span>
         </div>
         <h1 class="hero-title">
           The Traditional Game of <br>
@@ -102,7 +103,7 @@
             Download Game (Android APK)
           </a>
 
-          <a href="https://github.com/Jaimortal/Pulistaya" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg">
+          <a href="#github-modal" class="btn btn-github btn-lg js-open-github-modal">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
             </svg>
@@ -125,12 +126,12 @@
             <p>Mobile Exclusive</p>
           </div>
           <div class="hero-stat-item">
-            <h4>3 Days</h4>
+            <h4>3.5 Days</h4>
             <p>Sprint Build</p>
           </div>
           <div class="hero-stat-item">
-            <h4>Open Source</h4>
-            <p>Made For Fun</p>
+            <h4>Discontinued</h4>
+            <p>Still Playable</p>
           </div>
         </div>
       </div>
@@ -518,17 +519,20 @@
           <p>Host games right from your smartphone or PC. Friends can join seamlessly by typing in the local IP address or connecting via WiFi.</p>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="6" width="20" height="12" rx="2"></rect>
-              <path d="M6 12h4m-2-2v4"></path>
-              <line x1="15" y1="11" x2="15.01" y2="11"></line>
-              <line x1="18" y1="13" x2="18.01" y2="13"></line>
-            </svg>
+        <div class="feature-card" style="border-color: rgba(234, 88, 12, 0.4); background: linear-gradient(180deg, rgba(234, 88, 12, 0.08) 0%, var(--bg-card) 100%);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem;">
+            <div class="feature-icon-wrapper" style="margin-bottom: 0;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </div>
+            <span style="background: rgba(234, 88, 12, 0.2); color: var(--primary-400); font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(234, 88, 12, 0.3);">New Feature</span>
           </div>
-          <h3>Cross-Platform Support</h3>
-          <p>Seamlessly play together whether you are on Windows PC with mouse &amp; keyboard, or on an Android smartphone with touch controls.</p>
+          <h3>In-Game Emotes System</h3>
+          <p>Express yourself during matches! Taunt the Police, communicate tactical positions with fellow Hiders, or celebrate your escapes with animated in-game emotes.</p>
         </div>
 
         <div class="feature-card">
@@ -639,6 +643,10 @@
               <td><span class="key-badge">ANO / RADAR Button</span></td>
             </tr>
             <tr>
+              <td>Emotes &amp; Expressions</td>
+              <td><span class="key-badge">Emote Button</span> (On-screen HUD)</td>
+            </tr>
+            <tr>
               <td>HUD &amp; Sensitivity Config</td>
               <td><span class="key-badge">Settings Icon</span> (Top Right)</td>
             </tr>
@@ -708,10 +716,10 @@
       <div class="section-header">
         <span class="section-tag">Behind The Scenes</span>
         <h2 class="section-title">Development &amp; Open Source Credits</h2>
-        <p class="section-desc">Created in an intensive 3-day development sprint combining human design with modern AI-assisted engineering.</p>
+        <p class="section-desc">Created in an intensive 3.5-day development sprint combining human design with modern AI-assisted engineering.</p>
       </div>
 
-      <!-- 3-Day Sprint Disclaimer Banner -->
+      <!-- 3.5-Day Sprint & Discontinuation Notice Banner -->
       <div class="sprint-disclaimer-box">
         <div class="sprint-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -720,9 +728,9 @@
           </svg>
         </div>
         <div class="sprint-text">
-          <h4>Created in a Total of 3 Days — Made For Fun</h4>
+          <h4>Created in a Total of 3.5 Days — Project Discontinued</h4>
           <p>
-            Please don't expect a AAA commercial release! This game was engineered from scratch in just <strong>3 days</strong> as a creative experiment, learning project, and passion tribute to the Filipino street game <em>Pulis Dunggab</em>.
+            Please don't expect a AAA commercial release! This game was engineered from scratch in just <strong>3 and a half days</strong> as a creative experiment, learning project, and passion tribute to the Filipino street game <em>Pulis Dunggab</em>.
           </p>
         </div>
       </div>
@@ -737,17 +745,17 @@
           </p>
         </div>
 
-        <!-- Open Source & Non-Commercial Card -->
+        <!-- Project Status & Discontinuation Card -->
         <div class="open-source-card">
           <div>
-            <span class="dev-role-badge" style="background: rgba(34, 197, 94, 0.15); color: #4ade80;">100% Free &amp; Open Source</span>
-            <h3>No Store Release &bull; Pure Passion</h3>
+            <span class="dev-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">Status: Discontinued</span>
+            <h3>Development Ended &bull; Game Still Playable</h3>
             <p>
-              Pulistaya has <strong>no intention to be released on Google Play Store</strong> or any commercial marketplace. The entire codebase is open-source on GitHub so other developers and Filipino students can study, modify, and build upon it freely.
+              Active development on Pulistaya has been discontinued as the developer has stepped away from pursuing a programming career. The GitHub source code has been switched to private, but the game remains <strong>100% free to download and play</strong> with friends over local LAN and mobile hotspots.
             </p>
           </div>
           <div style="font-size: 0.82rem; color: #9CA3AF;">
-            Platform: Android APK only &bull; License: Open Source (MIT)
+            Platform: Android APK (V-11.13.61203) &bull; Status: Discontinued &bull; Private Repository
           </div>
         </div>
       </div>
@@ -866,11 +874,11 @@
             Download Game Build
           </button>
 
-          <a href="https://github.com/Jaimortal/Pulistaya" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg">
+          <a href="#github-modal" class="btn btn-github btn-lg js-open-github-modal">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
             </svg>
-            Star on GitHub
+            GitHub Repository
           </a>
         </div>
       </div>
@@ -903,10 +911,10 @@
             </div>
             <div class="download-details">
               <h4>Android APK &bull; Google Drive (Recommended)</h4>
-              <p>Version V-11.8.6617 &bull; ~100 MB &bull; Instant download &bull; Verified safe on Android</p>
+              <p>Version V-11.13.61203 (Emote Update) &bull; 103 MB &bull; Instant download &bull; Verified safe on Android</p>
             </div>
           </div>
-          <a href="https://drive.google.com/file/d/1aih8lD4XYrDs-VYsDmY-wfwo85eGH1Cv/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="btn-dl-apk">
+          <a href="https://drive.google.com/file/d/1pEcCCszaLfEjV8O78-8u2hoFY-ZQl5Ea/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="btn-dl-apk">
             Download APK
           </a>
         </div>
@@ -923,15 +931,15 @@
             </div>
             <div class="download-details">
               <h4>GitHub Releases Mirror</h4>
-              <p>Direct APK download (Pulistaya-v2.apk) &bull; V-11.8.6617 &bull; ~100 MB</p>
+              <p>Direct APK download (Pulistaya-v3.apk) &bull; V-11.13.61203 &bull; 103 MB</p>
             </div>
           </div>
-          <a href="https://github.com/Jaimortal/Pulistaya/releases/latest/download/Pulistaya-v2.apk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+          <a href="https://github.com/Jaimortal/Pulistaya/releases/latest/download/Pulistaya-v3.apk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
             Mirror Download
           </a>
         </div>
 
-        <!-- GitHub Source Code -->
+        <!-- GitHub Source Code (Private) -->
         <div class="download-option-card">
           <div class="download-info">
             <div class="download-icon github">
@@ -941,11 +949,11 @@
             </div>
             <div class="download-details">
               <h4>Source Code &amp; Project</h4>
-              <p>100% Open source on GitHub &bull; Godot 4.7.2 project files</p>
+              <p>Switched to Private &bull; Godot 4.7.2 project files</p>
             </div>
           </div>
-          <a href="https://github.com/Jaimortal/Pulistaya" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-sm">
-            View Repo
+          <a href="#github-modal" class="btn btn-github btn-sm js-open-github-modal">
+            View Status
           </a>
         </div>
       </div>
@@ -957,6 +965,60 @@
           <line x1="12" y1="8" x2="12.01" y2="8"></line>
         </svg>
         <span><strong>Quick Setup Tip:</strong> For local multiplayer, make sure all phones and PCs are connected to the same WiFi router or Mobile Hotspot.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub Private Repository Notice Modal -->
+  <div class="modal-overlay" id="github-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn js-close-github-modal" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: rgba(234, 88, 12, 0.15); color: var(--primary-400); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <h3>Repository Switched to Private</h3>
+        <p>Important update regarding the project source code.</p>
+      </div>
+
+      <div class="github-notice-body" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; line-height: 1.6; font-size: 0.92rem; color: #D1D5DB;">
+        <p style="margin-bottom: 0.85rem;">
+          The GitHub source code repository has been switched to <strong>private</strong> by the developer, <strong>Jaimortal</strong> (Jaime Perez), following a decision to discontinue active development and transition away from a programming career.
+        </p>
+        <p style="margin-bottom: 0.85rem;">
+          You can continue to the GitHub link below to check if the repository is still accessible to your account. If it is not working or if you need access, you may email the developer directly at <a href="mailto:thepersonaljaime@gmail.com" style="color: var(--primary-400); text-decoration: underline; font-weight: 600;">thepersonaljaime@gmail.com</a>.
+        </p>
+        <div style="background: rgba(34, 197, 94, 0.1); border-left: 3px solid #22c55e; padding: 0.65rem 0.85rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 0.85rem; color: #86efac;">
+          <strong>Game is Still Playable:</strong> You can continue downloading and playing the game! The free Android APK builds remain fully accessible and playable over local LAN / hotspot.
+        </div>
+      </div>
+
+      <div class="github-modal-actions" style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="https://github.com/Jaimortal/Pulistaya" target="_blank" rel="noopener noreferrer" class="btn btn-github btn-lg" style="width: 100%; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          Continue to GitHub
+        </a>
+        <a href="mailto:thepersonaljaime@gmail.com" class="btn btn-secondary btn-lg" style="width: 100%; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Email Developer (thepersonaljaime@gmail.com)
+        </a>
+        <button type="button" class="btn btn-secondary btn-sm js-close-github-modal" style="width: 100%; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted); cursor: pointer;">
+          Close
+        </button>
       </div>
     </div>
   </div>
@@ -999,10 +1061,10 @@
         <div class="footer-col">
           <h4>Downloads</h4>
           <ul class="footer-links">
-            <li><a href="https://drive.google.com/file/d/1aih8lD4XYrDs-VYsDmY-wfwo85eGH1Cv/view?usp=sharing" target="_blank" rel="noopener noreferrer">Google Drive APK (V-11.8.6617)</a></li>
+            <li><a href="https://drive.google.com/file/d/1pEcCCszaLfEjV8O78-8u2hoFY-ZQl5Ea/view?usp=sharing" target="_blank" rel="noopener noreferrer">Google Drive APK (V-11.13.61203 • 103 MB)</a></li>
             <li><a href="#credits">Credits &amp; Toolchain</a></li>
             <li><a href="https://github.com/Jaimortal/Pulistaya/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></li>
-            <li><a href="https://github.com/Jaimortal/Pulistaya" target="_blank" rel="noopener noreferrer">Source Code (MIT)</a></li>
+            <li><a href="#github-modal" class="js-open-github-modal">Source Code (Private)</a></li>
           </ul>
         </div>
 
